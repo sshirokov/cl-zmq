@@ -1,0 +1,3 @@
+Fork of http://repo.or.cz/w/cl-zmq.git
+
++ TODO: Add LINGER socket option
