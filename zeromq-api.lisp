@@ -138,9 +138,15 @@ The string must be freed with FOREIGN-STRING-FREE."
   (etypecase value
     (string (with-foreign-string (string value)
               (%setsockopt socket option string (length value))))
-    (integer (with-foreign-object (int :int64)
-               (setf (mem-aref int :int64) value)
-               (%setsockopt socket option int (foreign-type-size :int64))))))
+    (integer (cond
+               ((= option linger)
+                (with-foreign-object (int :int)
+                  (setf (mem-aref int :int) value)
+                  (%setsockopt socket option int (foreign-type-size :int))))
+               (t
+                (with-foreign-object (int :int64)
+                  (setf (mem-aref int :int64) value)
+                  (%setsockopt socket option int (foreign-type-size :int64))))))))
 
 (defun getsockopt (socket option)
   (with-foreign-objects ((opt :int64)
