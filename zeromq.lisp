@@ -120,6 +120,7 @@
 (defconstant sndbuf 11)
 (defconstant rcvbuf 12)
 (defconstant rcvmore 13)
+(defconstant linger 17)
 
 (defconstant noblock 1)
 (defconstant sndmore 2)
