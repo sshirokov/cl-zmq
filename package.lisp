@@ -24,6 +24,7 @@
    #:hausnumero
    #:hwm
    #:identity
+   #:linger
    #:max-vsm-size
    #:mcast-loop
    #:msg-shared
