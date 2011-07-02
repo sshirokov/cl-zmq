@@ -156,7 +156,7 @@ The string must be freed with FOREIGN-STRING-FREE."
     (%getsockopt socket option opt len)
     (mem-aref opt :int64)))
 
-(defun poll (items &optional (timeout -1))
+(defun poll (items &key (timeout -1))
   (let ((len (length items)))
     (with-foreign-object (%items 'pollitem len)
       (dotimes (i len)
